@@ -1,0 +1,31 @@
+
+::ng-deep {
+  .p-card-title {
+    text-align: center;
+  }
+
+  .p-card .p-card-body {
+    padding: 3.25rem;
+  }
+}
+
+
+  body {
+      font-family: 'Comic Sans MS', sans-serif;
+  }
+
+  .content {
+    display: flex;
+    margin: 50px auto 32px;
+    padding: 0 16px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }

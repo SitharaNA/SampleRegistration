@@ -1,0 +1,64 @@
+
+<form 
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()">
+
+  <div class="p-fluid grid formgrid">
+    <div formGroupName="name">
+
+      <div class="col-12 md:col-4">
+        <label>First Name</label>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+          <input id="user-first-name" type="text" pInputText placeholder="First name"
+                 formControlName="firstName" required>
+        </div>
+        <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+          <p *ngIf="firstName.errors.required">First Name is required</p>
+        </div>
+      </div>
+
+      <div class="col-12 md:col-4">
+        <label>Last Name</label>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+          <input id="user-last-name" type="text" pInputText placeholder="Last name"
+                 formControlName="lastName" required>
+        </div>
+        <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+          <p *ngIf="lastName.errors.required">Last Name is required</p>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="col-12 md:col-4">
+      <label>Email</label>
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-at"></i></span>
+        <input id="user-email" type="text" pInputText placeholder="Email"
+               formControlName="email" required>
+      </div>
+      <div *ngIf="email.errors && (email.dirty || email.touched)">
+        <p *ngIf="email.errors.required">Email is required</p>
+        <p *ngIf="email.errors.pattern">The email address is invalid</p>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-4">
+      <label>Password</label>
+      <p-password [toggleMask]="true" formControlName="password"
+                  required></p-password>
+      <div *ngIf="password.errors && (password.dirty || password.touched)">
+        <p *ngIf="password.errors.required">Password is required</p>
+        <p *ngIf="password.errors.minlength">Password must be 10 characters long</p>
+      </div>
+    </div>
+
+    <p-button type="submit" label="Submit" [disabled]="!form.valid"></p-button>
+
+    </div>
+</form>
+
+
