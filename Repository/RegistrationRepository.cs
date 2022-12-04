@@ -14,7 +14,7 @@ namespace Repository
         private static SemaphoreSlim semaphore = new SemaphoreSlim(1);
         private Registration Config { get; set; }
         private ILogger Logger { get; set; }
-        public RegistrationRepository(IOptions<Registration> registration, ILogger logger)
+        public RegistrationRepository(IOptions<Registration> registration, ILogger<IRegistrationRepository> logger)
         {
             Logger = logger;
             Config = registration != null ? registration.Value : throw new ArgumentNullException();

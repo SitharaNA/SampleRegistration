@@ -19,7 +19,7 @@ namespace Test
         public RegistrationRepositoryTest()
         {
             file = Path.Combine(Directory.GetCurrentDirectory(), file);
-            var mockLogger = new Mock<ILogger>();
+            var mockLogger = new Mock<ILogger<IRegistrationRepository>>();
             IOptions<Registration> options = Options.Create(
                 new Registration()
                 {
