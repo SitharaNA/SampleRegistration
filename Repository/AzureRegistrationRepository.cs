@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,11 +22,11 @@ namespace Repository
         public async override Task WriteFile(string data)
         {
             await base.WriteFile(data).ConfigureAwait(false);
-
+            var blobName = Config.FileName.Split('\\').Last();
             BlobClient blobClient = new BlobClient(
                 connectionString: Config.Connection,
                 blobContainerName: Config.Container,
-                blobName: "data");
+                blobName: blobName);
 
             blobClient.Upload(Config.FileName, true);
         }
