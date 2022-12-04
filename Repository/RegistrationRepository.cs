@@ -20,7 +20,7 @@ namespace Repository
             Config = registration != null ? registration.Value : throw new ArgumentNullException();
         }
 
-        public async Task<string> ReadFile()
+        public async virtual Task<string> ReadFile()
         {
             semaphore.Wait();
             try
@@ -49,7 +49,7 @@ namespace Repository
             }
         }
 
-        public async Task WriteFile(string data)
+        public async virtual Task WriteFile(string data)
         {
             semaphore.Wait();
             try

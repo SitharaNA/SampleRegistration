@@ -14,13 +14,14 @@ namespace SampleRegistration
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            Environment = env;
         }
 
         public IConfiguration Configuration { get; }
-
+        public IWebHostEnvironment Environment { get; }
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -31,7 +32,10 @@ namespace SampleRegistration
                 configuration.RootPath = "ClientApp/dist";
             });
             services.AddScoped<IRegistrationService, RegistrationDomain>();
-            services.AddScoped<IRegistrationRepository, RegistrationRepository>();
+            if(Environment.IsDevelopment())
+                services.AddScoped<IRegistrationRepository, RegistrationRepository>();
+            else
+                services.AddScoped<IRegistrationRepository, AzureRegistrationRepository>();
             services.Configure<Registration>(Configuration.GetSection(nameof(Registration)));
         }
 

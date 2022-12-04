@@ -48,7 +48,7 @@
 
     <div class="col-12 md:col-4">
       <label>Password</label>
-      <p-password [toggleMask]="true" formControlName="password"
+      <p-password [toggleMask]="true" [feedback]="false" formControlName="password"
                   required></p-password>
       <div *ngIf="password.errors && (password.dirty || password.touched)">
         <p *ngIf="password.errors.required">Password is required</p>
